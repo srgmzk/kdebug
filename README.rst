@@ -1,16 +1,50 @@
-# kdebug. kernel debug practice
+kdebug. kernel debug practice
+'''''''''''''''''''''''''''''
 
-useful links:
+**Useful links:**
 
 https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html
 https://medium.com/@daeseok.youn/prepare-the-environment-for-developing-linux-kernel-with-qemu-c55e37ba8ade
 
-**1. Get kernel**
 
-..code ::
+**kernel**
 
-	$ git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
-	make ARCH=x86_64 x86_64_defconfig
-    make ARCH=x86_64 menuconfig
+.. code::
+
+ git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
+ make ARCH=x86_64 x86_64_defconfig 
+ make ARCH=x86_64 menuconfig
+ 
+**rootfs**
+ 
+**cscope**
+
+http://cscope.sourceforge.net/large_projects.html
+
+Для ядра Linux это немного сложнее, поскольку мы хотим исключить весь код в каталогах документации и сценариев, а также всю архитектуру и код сборки для всех чипов,
+кроме всеми любимого Intel x86 (который, как я предполагаю, является интересующая вас архитектура). Кроме того, я исключаю весь код драйвера ядра в этом примере 
+(они более чем вдвое превышают объем кода для анализа, что приводит к раздуванию базы данных Cscope, и они содержат много повторяющихся определений, что часто 
+затрудняет поиск. код драйвера, опустите соответствующую строку ниже или измените ее, чтобы распечатать только интересующие вас файлы драйвера):
+
+.. code::
+
+#!/bin/bash
+
+LNX="."
+
+echo "Finding relevant source files..."
+find $LNX                                                                \
+    -path "$LNX/arch/*" ! -path "$LNX/arch/x86*" -prune -o               \
+    -path "$LNX/include/asm-*" ! -path "$LNX/include/asm-generic*"       \
+                               ! -path "$LNX/include/asm-x86*" -prune -o \
+    -path "$LNX/tmp*" -prune -o                                          \
+    -path "$LNX/Documentation*" -prune -o                                \
+    -path "$LNX/scripts*" -prune -o                                      \
+    -name "*.[chxsS]" -print > $LNX/cscope.files
+
+echo "Building cscope database..."
+time cscope -q -k -b -i cscope.files
+
+exit 0
 
 
