@@ -16,9 +16,18 @@ Build environment:
  git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
  make ARCH=x86_64 x86_64_defconfig 
  make ARCH=x86_64 menuconfig
+ ...
+ make -j8
  
 **rootfs**
 
+.. code::
+
+ cd buildroot
+ make menuconfig
+ ...
+ make -j8
+  
 Tools:
 ------
 
@@ -81,7 +90,7 @@ In another terminal to open vim . inside Kernel src run vim command:
 .. code::
 
  :Termdebug ./vmlinux
-
+ target remote localhost:1234
 .. code::
 
  debugged program+  gdb communication+                                                      buffers 
