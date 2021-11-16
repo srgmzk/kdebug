@@ -61,8 +61,35 @@ http://cscope.sourceforge.net/large_projects.html
 run kernel and debug it
 -----------------------
 
+1. run target system:
 
+Debug withoout rootfs:
 
+.. code::
+
+ qemu-system-x86_64 -s -S -no-kvm -kernel arch/x86/boot/bzImage -hda /dev/zero -append "root=/dev/zero console=ttyS0 nokaslr" -serial stdio -display none
+ 
+Debug with rootfs:
+
+.. code::
+
+ qemu-system-x86_64 -kernel arch/x86/boot/bzImage -boot c -m 2049M -hda ../buildroot/output/images/rootfs.ext2 -append "root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr" -serial stdio -display none 
+
+In another terminal to open vim . inside Kernel src run vim command:
+
+.. code::
+
+ :Termdebug ./vmlinux
+
+.. code::
+
+ debugged program+  gdb communication+                                                      buffers 
+ Reading symbols from ./vmlinux...                                                                       
+ startupdone                                                                                             
+ (gdb) new-ui mi /dev/pts/6                                                                              
+ New UI allocated                                                                                        
+ (gdb)     
+ ...
 
 
 
