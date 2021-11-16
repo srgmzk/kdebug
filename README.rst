@@ -24,7 +24,8 @@ Tools:
 
 **vim**
 
-https://github.com/srgmzk/mdsk
+- https://github.com/srgmzk/mdsk
+- https://www.dannyadam.com/blog/2019/05/debugging-in-vim/
 
 **cscope**
 
