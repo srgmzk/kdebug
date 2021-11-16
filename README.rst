@@ -73,7 +73,7 @@ run kernel and debug it
 
 1. run target system:
 
-Debug withoout rootfs:
+Debug without rootfs:
 
 .. code::
 
