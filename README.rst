@@ -22,7 +22,7 @@ Build environment:
 Tools:
 ------
 
-**vim plugins**
+**vim**
 
 https://github.com/srgmzk/mdsk
 
