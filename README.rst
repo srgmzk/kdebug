@@ -3,8 +3,8 @@ kdebug. kernel debug practice
 
 **Useful links:**
 
-https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html
-https://medium.com/@daeseok.youn/prepare-the-environment-for-developing-linux-kernel-with-qemu-c55e37ba8ade
+- https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html
+- https://medium.com/@daeseok.youn/prepare-the-environment-for-developing-linux-kernel-with-qemu-c55e37ba8ade
 
 
 **kernel**
