@@ -6,6 +6,8 @@ kdebug. kernel debug practice
 - https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html
 - https://medium.com/@daeseok.youn/prepare-the-environment-for-developing-linux-kernel-with-qemu-c55e37ba8ade
 
+Build environment:
+------------------
 
 **kernel**
 
@@ -16,7 +18,14 @@ kdebug. kernel debug practice
  make ARCH=x86_64 menuconfig
  
 **rootfs**
- 
+
+Tools:
+------
+
+**vim plugins**
+
+https://github.com/srgmzk/mdsk
+
 **cscope**
 
 http://cscope.sourceforge.net/large_projects.html
@@ -46,5 +55,18 @@ http://cscope.sourceforge.net/large_projects.html
  time cscope -q -k -b -i cscope.files
 
  exit 0
+
+**qemu**
+
+run kernel and debug it
+-----------------------
+
+
+
+
+
+
+
+
 
 
