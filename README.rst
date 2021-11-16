@@ -28,12 +28,12 @@ http://cscope.sourceforge.net/large_projects.html
 
 .. code::
 
-#!/bin/bash
+ #!/bin/bash
 
-LNX="."
+ LNX="."
 
-echo "Finding relevant source files..."
-find $LNX                                                                \
+ echo "Finding relevant source files..."
+ find $LNX                                                                \
     -path "$LNX/arch/*" ! -path "$LNX/arch/x86*" -prune -o               \
     -path "$LNX/include/asm-*" ! -path "$LNX/include/asm-generic*"       \
                                ! -path "$LNX/include/asm-x86*" -prune -o \
@@ -42,9 +42,9 @@ find $LNX                                                                \
     -path "$LNX/scripts*" -prune -o                                      \
     -name "*.[chxsS]" -print > $LNX/cscope.files
 
-echo "Building cscope database..."
-time cscope -q -k -b -i cscope.files
+ echo "Building cscope database..."
+ time cscope -q -k -b -i cscope.files
 
-exit 0
+ exit 0
 
 
